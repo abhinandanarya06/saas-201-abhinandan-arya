@@ -41,55 +41,33 @@ RECTYPE = 0
 SOURCE = 1
 DESTINATION = 2
 
-# parse_dns(file_raw) : returns hashmap of domain to domain and domain to ip mapping
-
 def parse_dns(raw)
-  # HASHMAP FROM SOURCE TO DESTINATION MAPPING
+  # parse_dns(<list of line strings>)
+  # To build domain to domain and domain to IP mapping (HASHMAP)
+  # returns records having mapping as follows :-
+  #       SOURCE => [ RECORD_TYPE, nil, DESTINATION ]
   records = {}
-
   raw.each { |line|
-
-    # IF line IS VALID RECORD
     if not(line.strip[0] == "#" or line.strip.length == 0)
-
-      # SPLIT THE LINE ON COMMA
       record = line.strip.split(",").map { |e| e.strip }
-
-      # ADD MAPPING FROM SOURCE TO DESTINATION
       records[record[SOURCE].to_sym] = [record[RECTYPE], nil, record[DESTINATION]]
     end
   }
   records
 end
 
-# resolve(records, lookup_chain, domain) : returns lookup_chain having domain
-#     to domain to ip mapping sequence
 def resolve(records, lookup_chain, domain)
-  # CASE IF RECORD NOT FOUND
+  # resolve(<hashmap>, <list of strings>, <string>)
+  # To get mapping chain list from source domain to destination IP
+  # pushes the answer on lookup_chain and return it after recursive calls
   if records.keys.find { |e| e == domain.to_sym } == nil
-
-    # ADD APPROPRIATE MESSAGE TO LOOKUP
     lookup_chain = ["Error: record not found for #{domain}"]
-
-    # RETURN THE LOOKUP
     lookup_chain
-
-    # IF DESTINATION IS ANOTHER DOMAIN
   elsif records[domain.to_sym][RECTYPE] == "CNAME"
-
-    # PUSH THE DESTINATION DOMAIN TO LOOKUP
     lookup_chain.push(records[domain.to_sym][DESTINATION])
-
-    # RECURSIVELY CALL FOR DESTINATION DOMAIN TO RESOLVE
     resolve(records, lookup_chain, lookup_chain.last)
-
-    # IF DESTINATION IS IP ADDRESS
   elsif records[domain.to_sym][RECTYPE] == "A"
-
-    # PUSH THE DESTINATION IP TO LOOKUP
     lookup_chain.push(records[domain.to_sym][DESTINATION])
-
-    # RETURN THE LOOKUP
     lookup_chain
   end
 end
