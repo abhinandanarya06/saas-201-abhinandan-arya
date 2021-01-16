@@ -86,7 +86,7 @@ def resolve(records, lookup_chain, domain)
     # IF DESTINATION IS IP ADDRESS
   elsif records[domain.to_sym][RECTYPE] == "A"
 
-    # PUSH THE DESTINATION DOMAIN TO LOOKUP
+    # PUSH THE DESTINATION IP TO LOOKUP
     lookup_chain.push(records[domain.to_sym][DESTINATION])
 
     # RETURN THE LOOKUP
