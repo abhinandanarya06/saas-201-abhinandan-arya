@@ -20,37 +20,14 @@ todos = [
 #   food:
 #     Buy groceries
 
-# VARIABLE FOR STORING TODOS CATEGORIES
-cats = []
-
-# GETTING CATEGORIES SET FROM TODO LIST
-todos.each { |todo|
-  found = cats.find { |e| e == todo[1] }
-  if (found == nil)
-    cats.push(todo[1])
-  end
-}
-
-# VARIABLE HAVING OUTPUT TO BE PRINTED
+cats = todos.map { |todo| todo[1] }.uniq
 output = []
 
-# ITERATING OVER ALL TODO CATEGORIES
 cats.each { |cat|
-
-  # FIRST PUSH TODO CATEGORY
   output.push("  #{cat}:")
 
-  # VARIABLE FOR STORING TODOS OF CURRENT CATEGORIES
-  todol = []
-
-  # ITERATING OVER ALL TODOS
-  todos.each { |todo|
-    if (cat == todo[1])
-      todol.push("    #{todo[0]}")
-    end
-  }
+  todol = todos.filter { |todo| todo[1] == cat }.map { |todo| "    #{todo[0]}" }
   output.push(todol)
 }
 
-# PRINTING THE ANSWER
 puts output
