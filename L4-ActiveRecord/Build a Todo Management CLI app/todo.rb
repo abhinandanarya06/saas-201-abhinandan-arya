@@ -31,17 +31,17 @@ class Todo < ActiveRecord::Base
   def self.show_list
     puts "My Todo-list"
 
-    puts "Overdue"
+    puts "\nOverdue"
     puts all.filter { |todo| todo.overdue? }.map { |todo|
       "#{todo.id}. [#{todo.completed ? "X" : " "}] #{todo.todo_text} #{todo.due_date}"
     }
 
-    puts "Due Today"
+    puts "\nDue Today"
     puts all.filter { |todo| todo.due_today? }.map { |todo|
       "#{todo.id}. [#{todo.completed ? "X" : " "}] #{todo.todo_text}"
     }
 
-    puts "Due Later"
+    puts "\nDue Later"
     puts all.filter { |todo| todo.due_later? }.map { |todo|
       "#{todo.id}. [#{todo.completed ? "X" : " "}] #{todo.todo_text} #{todo.due_date}"
     }
