@@ -60,7 +60,7 @@ def resolve(records, lookup_chain, domain)
   # resolve(<hashmap>, <list of strings>, <string>)
   # To get mapping chain list from source domain to destination IP
   # pushes the answer on lookup_chain and return it after recursive calls
-  if records.keys.find { |e| e == domain.to_sym } == nil
+  if records[domain.to_sym].nil?
     lookup_chain = ["Error: record not found for #{domain}"]
     lookup_chain
   elsif records[domain.to_sym][RECTYPE] == "CNAME"
