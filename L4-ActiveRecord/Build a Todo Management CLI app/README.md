@@ -28,6 +28,15 @@ Implemented the class Todo so that other files depend on it can run
 
 Program to connect to Postgree database
 
+Configuration :-
+| Property | Value |
+|----------|-------|
+| Host | `localhost` |
+| Adapter | `postgresql` |
+| Database | `saas_db` |
+| User | `postgres` |
+| Password | `changeme` |
+
 ### `list-todos.rb`
 
 ```
