@@ -13,7 +13,7 @@ class Todo < ActiveRecord::Base
   # 1. to_displayable_string
   def to_displayable_string
     # NOT PRINT DATE WHEN IT DUE DATE IS TODAY
-    display_date = (due_date != Date.today) ? due_date : nil
+    display_date = due_date if (due_date != Date.today)
     "#{id}. #{completed ? "[X]" : "[ ]"} #{todo_text} #{display_date}"
   end
 
