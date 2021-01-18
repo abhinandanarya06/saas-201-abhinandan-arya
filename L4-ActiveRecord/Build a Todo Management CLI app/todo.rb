@@ -1,27 +1,20 @@
 require "active_record"
 
 class Todo < ActiveRecord::Base
+  # ------------------ FILTER METHODS -----------------------
+  # 1. overdue
+  # 2. due_today
+  # 3. due_later
+  scope :overdue, -> { where("due_date < ?", Date.today) }
+  scope :due_today, -> { where("due_date = ?", Date.today) }
+  scope :due_later, -> { where("due_date > ?", Date.today) }
+
   # ------------------- OBJECT METHODS ----------------------
-  # 1. overdue?
-  # 2. due_today?
-  # 3. due_later?
-  # 4. to_displayable_string
-
-  def overdue?
-    due_date < Date.today
-  end
-
-  def due_today?
-    due_date == Date.today
-  end
-
-  def due_later?
-    due_date > Date.today
-  end
-
+  # 1. to_displayable_string
   def to_displayable_string
-    display_date = due_today? ? nil : due_date
-    "#{completed ? "[X]" : "[ ]"} #{todo_text} #{display_date}"
+    # NOT PRINT DATE WHEN IT DUE DATE IS TODAY
+    display_date = (due_date != Date.today) ? due_date : nil
+    "#{id}. #{completed ? "[X]" : "[ ]"} #{todo_text} #{display_date}"
   end
 
   # ------------------ CLASS MODEL METHODS --------------------
@@ -32,19 +25,13 @@ class Todo < ActiveRecord::Base
     puts "My Todo-list"
 
     puts "\nOverdue"
-    puts all.filter { |todo| todo.overdue? }.map { |todo|
-      "#{todo.id}. [#{todo.completed ? "X" : " "}] #{todo.todo_text} #{todo.due_date}"
-    }
+    puts overdue.map { |todo| todo.to_displayable_string }
 
     puts "\nDue Today"
-    puts all.filter { |todo| todo.due_today? }.map { |todo|
-      "#{todo.id}. [#{todo.completed ? "X" : " "}] #{todo.todo_text}"
-    }
+    puts due_today.map { |todo| todo.to_displayable_string }
 
     puts "\nDue Later"
-    puts all.filter { |todo| todo.due_later? }.map { |todo|
-      "#{todo.id}. [#{todo.completed ? "X" : " "}] #{todo.todo_text} #{todo.due_date}"
-    }
+    puts due_later.map { |todo| todo.to_displayable_string }
   end
 
   def self.add_task(new_todo)

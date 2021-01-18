@@ -15,10 +15,12 @@
 Implemented the class Todo so that other files depend on it can run
 
 - `Todo class < ActiveRecord::Base`
+  - Filter Methods
+    - `overdue`
+    - `due_today`
+    - `due_later`
   - Object Methods
-    - `overdue?`
-    - `due_today?`
-    - `due_later?`
+    - `to_displayable_string`
   - Class Model Methods
     - `self.show_list`
     - `self.add_task(new_todo)`
