@@ -1,0 +1,47 @@
+.count {
+  margin: 8px 32px;
+  padding: 16px;
+
+  transition: all 1s ease;
+
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 32px;
+  line-height: 1.5;
+}
+
+.button-row {
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  display: block;
+  border: 0;
+  padding: 8px 16px;
+  margin-right: 16px;
+
+  text-transform: capitalize;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  line-height: 1.5;
+
+  color: #eff6ff;
+  background-color: #2563EB;
+}
+
+button:hover {
+  background-color: #1e3a8a;
+}
+
+button:active {
+  transform: translateY(3px);
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

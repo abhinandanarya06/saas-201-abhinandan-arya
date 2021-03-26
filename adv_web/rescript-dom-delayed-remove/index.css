@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.progress {
+  animation-name: reduce-width;
+  animation-duration: 10s;
+}
+
+@keyframes reduce-width {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "rescript-project-template",
+  "version": "0.0.1",
+  "scripts": {
+    "clean": "bsb -clean-world",
+    "start": "bsb -make-world -w",
+    "server": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "keywords": [
+    "rescript"
+  ],
+  "author": "Jacob Sherin <jacob@protoship.io>",
+  "license": "CC-BY-4.0",
+  "devDependencies": {
+    "@snowpack/plugin-postcss": "^1.1.0",
+    "@snowpack/plugin-react-refresh": "^2.4.0",
+    "autoprefixer": "^10.2.4",
+    "bs-platform": "^8.3.3",
+    "postcss": "^8.2.6",
+    "postcss-cli": "^8.3.1",
+    "snowpack": "^3.0.11",
+    "tailwindcss": "^2.0.3"
+  },
+  "dependencies": {
+    "@rescript/react": "^0.10.1",
+    "@tailwindcss/forms": "^0.2.1",
+    "nanoid": "^3.1.20",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  }
+}

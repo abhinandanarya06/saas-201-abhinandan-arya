@@ -1,0 +1,25 @@
+{
+  "homepage": "http://abhinandanarya06.github.io/tic-tac-toe",
+  "name": "rescript-dom-tutorial",
+  "version": "0.0.1",
+  "description": "ReScript DOM & Web APIs",
+  "scripts": {
+    "clean": "bsb -clean-world",
+    "start": "bsb -make-world -w",
+    "server": "snowpack dev",
+    "build": "snowpack build",
+    "deploy": "gh-pages -d build"
+  },
+  "keywords": [
+    "rescript"
+  ],
+  "author": "Jacob Sherin <jacob@protoship.io>",
+  "license": "CC-BY-4.0",
+  "devDependencies": {
+    "bs-platform": "^8.3.3",
+    "snowpack": "^3.0.11"
+  },
+  "dependencies": {
+    "gh-pages": "^3.1.0"
+  }
+}

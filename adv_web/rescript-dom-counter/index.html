@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Interactive Counter Example</title>
+    <link rel="stylesheet" type="text/css" href="normalize.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <style>
+      .count-zero {
+        color: #e5e7eb;
+        background-color: #374151;
+      }
+
+      .count-negative {
+        color: #fecaca;
+        background-color: #b91c1c;
+      }
+
+      .count-positive {
+        color: #a7f3d0;
+        background-color: #047857;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p id="count" class="count count-zero">Count is 0</p>
+      <div class="button-row">
+        <button id="plus-one" class="mr-1">Plus One</button>
+        <button id="minus-one">Minus One</button>
+      </div>
+    </main>
+    <script type="module" src="src/index.bs.js"></script>
+  </body>
+</html>

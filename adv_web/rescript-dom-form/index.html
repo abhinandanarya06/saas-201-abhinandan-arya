@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Timers</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+  <body class="bg-purple-100">
+    <div id="container" class="max-w-3xl mx-auto">
+      <div id="container" class="max-w-3xl mx-auto p-4 mt-24 bg-white border-l-4 border-transparent focus:outline-none">
+        <textarea id="textEditor" placeholder="Enter content here!" class="block w-full mb-4"></textarea>
+        <div class="flex items-center text-sm">
+          <p class="mr-4">Change text size:</p>
+          <div id="radio-text-size" class="flex">
+            <label class="flex items-center pr-8">
+              <input class="mr-2" type="radio" name="textSize" id="selectSmall" />
+              <span>Small</span>
+            </label>
+            <label class="flex items-center pr-8">
+              <input class="mr-2" type="radio" name="textSize" id="selectRegular" checked />
+              <span>Regular</span>
+            </label>
+            <label class="flex items-center pr-8">
+              <input class="mr-2" type="radio" name="textSize" id="selectLarge" />
+              <span>Large</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white p-4 my-4">
+        <h2 class="font-bold mb-2">Preview</h2>
+        <p id="textView" class="focus:outline-none font-thin"></p>
+      </div>
+    </div>
+    <script type="module" src="src/index.bs.js"></script>
+  </body>
+</html>
